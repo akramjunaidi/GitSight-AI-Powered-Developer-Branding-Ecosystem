@@ -1,0 +1,72 @@
+GRAVITASI = 9.8      # Percepatan gravitasi (m/s^2)
+RHO_UDARA = 1.225    # Kepadatan udara (kg/m^3)
+
+print("PERHITUNGAN AERODINAMIKA PENERBANGAN GLIDING")
+
+print("\n--- A. Perhitungan Hezarfen Ahmed Çelebi ---")
+H_NAMA = "Hezarfen Ahmed Çelebi"
+H_MASSA = 90.0       # Massa (kg)
+H_V = 15.0           # Kecepatan luncur (m/s)
+H_A = 15.0           # Luas Sayap (m^2)
+H_CL = 0.8           # Koefisien Daya Angkat
+H_CD = 0.05          # Koefisien Gaya Hambat
+H_D_VER = 60.0       # Ketinggian awal (m)
+
+H_W = H_MASSA * GRAVITASI
+H_L = 0.5 * RHO_UDARA * (H_V ** 2) * H_A * H_CL
+H_D = 0.5 * RHO_UDARA * (H_V ** 2) * H_A * H_CD
+
+H_GR = H_L / H_D
+H_D_HOR = H_GR * H_D_VER
+
+print(f"Nama: {H_NAMA}")
+print(f"1. Gaya Berat (W): {H_W:.2f} N")
+print(f"2. Daya Angkat (L): {H_L:.2f} N")
+print(f"3. Gaya Hambat (D): {H_D:.2f} N")
+
+if H_L > H_W:
+    H_STATUS = "Meluncur Stabil (L > W)"
+else:
+    H_STATUS = "Segera Kehilangan Ketinggian (L < W)"
+print(f"\nStatus Fisika: {H_STATUS}")
+print(f"4. Rasio Luncur (GR): {H_GR:.2f} : 1")
+print(f"5. Jarak Horizontal Maksimum: {H_D_HOR:.2f} meter")
+
+
+print("\n--- B. Perhitungan Abbas bin Firnas ---")
+B_NAMA = "Abbas bin Firnas"
+B_MASSA = 80.0       # Massa (kg)
+B_V = 12.0           # Kecepatan luncur (m/s)
+B_A = 10.0           # Luas Sayap (m^2)
+B_CL = 0.6           # Koefisien Daya Angkat
+B_CD = 0.1           # Koefisien Gaya Hambat
+B_D_VER = 20.0       # Ketinggian awal (m)
+
+B_W = B_MASSA * GRAVITASI
+B_L = 0.5 * RHO_UDARA * (B_V ** 2) * B_A * B_CL
+B_D = 0.5 * RHO_UDARA * (B_V ** 2) * B_A * B_CD
+
+B_GR = B_L / B_D
+B_D_HOR = B_GR * B_D_VER
+
+print(f"Nama: {B_NAMA}")
+print(f"1. Gaya Berat (W): {B_W:.2f} N")
+print(f"2. Daya Angkat (L): {B_L:.2f} N")
+print(f"3. Gaya Hambat (D): {B_D:.2f} N")
+
+if B_L > B_W:
+    B_STATUS = "Meluncur Stabil (L > W)"
+else:
+    B_STATUS = "Segera Kehilangan Ketinggian (L < W)"
+print(f"\nStatus Fisika: {B_STATUS}")
+print(f"4. Rasio Luncur (GR): {B_GR:.2f} : 1")
+print(f"5. Jarak Horizontal Maksimum: {B_D_HOR:.2f} meter")
+
+print("\n--- C. Perbandingan Akhir ---")
+if H_GR > B_GR:
+    operator = ">"
+else:
+    operator = "<"
+
+print(f"Rasio Luncur Hezarfen ({H_GR:.2f}:1) {operator} Rasio Luncur Bin Firnas ({B_GR:.2f}:1)")
+print("Ini memvisualisasikan secara matematis mengapa upaya Hezarfen lebih sukses (Rasio L/D lebih tinggi).")
